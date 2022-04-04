@@ -18,8 +18,9 @@ router.post('/', async (req, res) => {
     // });
     // console.log("items");
     // await items.save();
- 
+    console.log("post");
     const { land, level } = req.body;
+    console.log(req.body)
     let item = await LevelItem.find({ $and: [ {"land":land}, { "level":level} ] });
     
     console.log(item);
