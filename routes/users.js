@@ -32,7 +32,6 @@ router.post('/',
         console.log(req.body);
         //try {
         let user = await User.findOne({ email });
-        console.log(user);
         if (user) {
             return res.send('exist');
         } else {

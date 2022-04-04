@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 
 const LevelItemSchema = new mongoose.Schema({
 
+  land: {
+    type: String,
+    Required: true
+  },
   level: {
     type: String,
     required: true
@@ -17,6 +21,10 @@ const LevelItemSchema = new mongoose.Schema({
   item: {
       type: String,
       required: true
+  },
+  maxHp: {
+    type: String,
+    required: true
   }
 
 })

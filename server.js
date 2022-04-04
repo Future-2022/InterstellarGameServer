@@ -1,13 +1,13 @@
 const express   = require('express')
 const connectDB = require('./config/db')
-var bodyParser = require('body-parser');
+//! const cors      = require('cors')
+
 const app = express()
 
 connectDB()
 
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json({ extended: false }))
+
 //app.get('/', (req, res) => res.send('API Running'))
 
 
@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/users',   require('./routes/users'))
 app.use('/login',   require('./routes/login'))
+app.use('/level',   require('./routes/level'))
 
 const PORT = process.env.PORT || 3001
 
