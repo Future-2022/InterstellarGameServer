@@ -7,23 +7,22 @@ const router = express.Router()
 const LevelItem = require('../models/LevelItem')
 
 router.post('/', async (req, res) => {
-
-    // var items = new LevelItem({
-    //     land:"hydro",
-    //     level:"1",
-    //     maxScore:"20",
-    //     enemy:"bad",
-    //     item:"weapon",
-    //     maxHp: "20"
-    // });
-    // console.log("items");
-    // await items.save();
-    console.log("post");
+/*
+    var levelitem = new LevelItem({
+        land: "hydro",
+        level: "1",
+        maxScore: "20",
+        enemy: "bad",
+        maxHp: '20'
+    });
+    console.log(levelitem);
+    await levelitem.save();
+*/
     const { land, level } = req.body;
-    console.log(req.body)
-    let item = await LevelItem.find({ $and: [ {"land":land}, { "level":level} ] });    
-    console.log(item);
+    let item = await LevelItem.find({ $and: [{ "land": land }, { "level": level }] });
+
     return res.send(item[0]);
-});
+}
+)
 
 module.exports = router

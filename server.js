@@ -16,6 +16,9 @@ app.use(express.json({ extended: false }))
 app.use('/users',   require('./routes/users'))
 app.use('/login',   require('./routes/login'))
 app.use('/level',   require('./routes/level'))
+app.use('/bullet',   require('./routes/bullet'))
+app.use('/enemy',   require('./routes/enemy'))
+app.use('/item',   require('./routes/item'))
 
 const PORT = process.env.PORT || 3001
 

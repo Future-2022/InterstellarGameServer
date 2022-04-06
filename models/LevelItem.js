@@ -18,14 +18,19 @@ const LevelItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  item: {
-      type: String,
-      required: true
-  },
+  items: [
+    {
+      item: {
+        type: String,
+        required: true
+      },
+    }
+  ],
   maxHp: {
     type: String,
     required: true
-  }
+  },
+  
 
 })
 
