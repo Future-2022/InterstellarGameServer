@@ -52,7 +52,6 @@ router.post('/', async (req, res) => {
 
     for (count=0; count < item[0].number; count++) {
         tempArray.push(item[0].items[count]);
-        console.log(item[0].items[count]);
     }
 
     return res.json(tempArray);
