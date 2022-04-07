@@ -42,14 +42,10 @@ router.post('/', async (req, res) => {
     // await Items.save();
 
     const { land, level } = req.body;
-
     let item = await Item.find({ $and: [{ "land": land }, { "level": level }] });
-    console.log("ss"+item[0].number);
-    
     var tempArray = [];
-
     var count;
-
+    
     for (count=0; count < item[0].number; count++) {
         tempArray.push(item[0].items[count]);
     }
