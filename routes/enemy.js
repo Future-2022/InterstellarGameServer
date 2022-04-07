@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
     const {land, level} = req.body;
     let enemy = await Enemy.find({ $and: [ {"land":land}, { "level":level} ] });
     var tempArray = [];
-    for (const enm of enemy[0].enemies) {
-        tempArray.push(enm);
+    for (const val of enemy[0].enemies) {
+        tempArray.push(val);
     }
     return res.json(tempArray);
 })
