@@ -3,7 +3,6 @@ const router = express.Router()
 const Item = require('../models/Item')
 
 router.post('/', async (req, res) => {
-
     // var Items = new Item({
     //     land: "hydro",
     //     level: "1",
@@ -45,11 +44,10 @@ router.post('/', async (req, res) => {
     let item = await Item.find({ $and: [{ "land": land }, { "level": level }] });
     var tempArray = [];
     var count;
-    
+
     for (count=0; count < item[0].number; count++) {
         tempArray.push(item[0].items[count]);
     }
-
     return res.json(tempArray);
 })
 module.exports = router
