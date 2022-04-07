@@ -8,9 +8,6 @@ connectDB()
 
 app.use(express.json({ extended: false }))
 
-//app.get('/', (req, res) => res.send('API Running'))
-
-
 //* Define routes
 
 app.use('/users',   require('./routes/users'))

@@ -8,11 +8,6 @@ const User = require('../models/User')
 
 const { check, validationResult } = require('express-validator')
 
-//* method    POST
-//* route     api/auth
-//* desc      Authenticate user & get token
-//* access    Public
-
 router.post('/',
     [
         check('name', 'Name is required').not().isEmpty(),

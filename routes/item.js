@@ -46,16 +46,15 @@ router.post('/', async (req, res) => {
     let item = await Item.find({ $and: [{ "land": land }, { "level": level }] });
     console.log("ss"+item[0].number);
     
-    var rr = [];
-    var i;
-    //for (const itm of item[0].items) {
-        for (i=0; i < item[0].number; i++) {
-            rr.push(item[0].items[i]);
-            console.log(item[0].items[i]);
-        }
-      //  break;
-    //}
-    console.log("Bullllet---", rr);
-    return res.json(rr);
+    var tempArray = [];
+
+    var count;
+
+    for (count=0; count < item[0].number; count++) {
+        tempArray.push(item[0].items[count]);
+        console.log(item[0].items[count]);
+    }
+
+    return res.json(tempArray);
 })
 module.exports = router
