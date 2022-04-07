@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
     const type = req.query.tt;
     let bullet = await Bullet.find({"type": type});
-//    console.log("Bullet---", bullet);
     return res.json({first: bullet[0].name, sec: bullet[1].name});
 })
+
 module.exports = router
