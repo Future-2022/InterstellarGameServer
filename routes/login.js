@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
-//const auth    = require('../../middleware/auth')
 const bcrypt = require('bcryptjs')
-//const jwt     = require('jsonwebtoken')
 const config = require('config')
 const User = require('../models/User')
 
@@ -21,15 +19,15 @@ router.post('/',
             return res.status(400).json({ errors: errors.array() })
         }
 
-        const { name, email, password } = req.body
+        const { name, email, pass } = req.body
         let user = await User.findOne({ email })
-
+        const isMatch = await bcrypt.compare(pass, user.password);
+        console.log(!isMatch);
         if (!user) {
             return res.send('Invalid Credentials')
         }
-
-        else if (password == user.password) {
-            return res.send('Invalid Credentials')
+        else if (!isMatch) {
+            return res.send('Password is not match!')
         } else {
             return res.send("Logged In")
         }
