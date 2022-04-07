@@ -1,24 +1,18 @@
 const express = require('express')
 const router = express.Router()
-//const auth    = require('../../middleware/auth')
-//const bcrypt = require('bcryptjs')
-//const jwt     = require('jsonwebtoken')
-//const config = require('config')
 const Bullet = require('../models/Bullet')
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {    
 
-    
-/*
-    var items = new Bullet({
-        type:"player",
-        name: "bulletspeed1",
-        force:"4",
-        damage: "1"
-    });
-    console.log("items");
-    await items.save();
-    */
+    // var items = new Bullet({
+    //     type:"player",
+    //     name: "bulletspeed1",
+    //     force:"4",
+    //     damage: "1"
+    // });
+    // console.log("items");
+    // await items.save();
+
     const type = req.query.tt;
     let bullet = await Bullet.find({"type": type});
 //    console.log("Bullet---", bullet);
