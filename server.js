@@ -16,6 +16,7 @@ app.use('/level',   require('./routes/level'))
 app.use('/bullet',   require('./routes/bullet'))
 app.use('/enemy',   require('./routes/enemy'))
 app.use('/item',   require('./routes/item'))
+app.use('/boss',   require('./routes/boss'))
 
 const PORT = process.env.PORT || 3001
 

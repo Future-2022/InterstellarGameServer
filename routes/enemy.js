@@ -6,16 +6,16 @@ router.post('/', async (req, res) => {
 
     // var enemies = new Enemy({
     //     land:"hydro",
-    //     level: "1",
+    //     level: "2",
     //     enemies: [
     //         {
-    //             enemy: "Enemy",
+    //             enemy: "enemy1-2",
     //         },
     //         {
-    //             enemy: "Asteroid",
+    //             enemy: "Asteroid-1-2",
     //         },
     //     ],
-    //     number: "2",
+    //     number: "4",
     // });
     // console.log(enemies);
     // await enemies.save();
@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
     const {land, level} = req.body;
     let enemy = await Enemy.find({ $and: [ {"land":land}, { "level":level} ] });
     var tempArray = [];
-    for (const val of enemy[0].enemies) {
-        tempArray.push(val);
+    for (const enm of enemy[0].enemies) {
+        tempArray.push(enm);
     }
     return res.json(tempArray);
 })

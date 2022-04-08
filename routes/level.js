@@ -10,14 +10,14 @@ router.post('/', async (req, res) => {
 
     // var levelitem = new LevelItem({
     //     land: "hydro",
-    //     level: "1",
-    //     maxScore: "20",
+    //     level: "2",
+    //     maxScore: "30",
     //     enemy: "bad",
     //     maxHp: '20'
     // });
     
-    console.log(levelitem);
-    await levelitem.save();
+    // console.log(levelitem);
+    // await levelitem.save();
 
     const { land, level } = req.body;
     let item = await LevelItem.find({ $and: [{ "land": land }, { "level": level }] });
