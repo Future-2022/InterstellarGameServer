@@ -5,16 +5,16 @@ const Boss = require('../models/Boss')
 router.post('/', async (req, res) => {    
 
     // var bosses = new Boss({
-    //     land:"hydro",
-    //     level: "2",
+    //     land:"centaurus",
+    //     level: "1",
     //     bosses: [
     //         {
-    //             boss: "boss1-2",
+    //             boss: "boss2-1",
     //         },
     //     ],
     //     number: "1",
     // });
-    // console.log(bosses);
+    // // console.log(bosses);
     // await bosses.save();
     
     const {land, level} = req.body;
@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
     var tempArray = [];
     for (const bss of find_boss[0].bosses) {
         tempArray.push(bss);
-        console.log("boss---"+tempArray);
     }
     return res.json(tempArray);
 })

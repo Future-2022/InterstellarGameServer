@@ -9,7 +9,6 @@ const { check, validationResult } = require('express-validator')
 router.post('/',
     [
         check('name', 'Name is required').not().isEmpty(),
-        check('email', 'Please include a valid email').isEmail(),
     ],
     async (req, res) => {
 
@@ -18,18 +17,18 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         }
+        const { name, pass } = req.body
+        let user = await User.findOne({ name:name });
 
-        const { name, email, pass } = req.body
-        let user = await User.findOne({ email })
-        const isMatch = await bcrypt.compare(pass, user.password);
-        console.log(!isMatch);
-        if (!user) {
-            return res.send('Invalid Credentials')
+        if (user == null) {
+            return res.send('Cannot find user')
         }
-        else if (!isMatch) {
-            return res.send('Password is not match!')
-        } else {
-            return res.send("Logged In")
+        else {
+            const isMatch = await bcrypt.compare(pass, user.password);
+            if(!isMatch)
+                return res.send('Password is not match!')
+            else
+                return res.send("Logged In")
         }
     }
 )

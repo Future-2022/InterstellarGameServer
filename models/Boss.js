@@ -16,6 +16,10 @@ const BossSchema = new mongoose.Schema({
         type: String,
         required: true
       },
+      hp: {
+        type: String,
+        required: true
+      },
     }
   ],
   number: {

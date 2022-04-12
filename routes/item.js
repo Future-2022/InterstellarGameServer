@@ -5,8 +5,8 @@ const Item = require('../models/Item')
 router.post('/', async (req, res) => {
 
     // var Items = new Item({
-    //     land: "hydro",
-    //     level: "2",
+    //     land: "centaurus",
+    //     level: "1",
     //     items: [
     //         {
     //             item: "bulletParallel",
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     //             item: "speed2",
     //         },
     //     ],
-    //     number: "4",
+    //     number: "6",
     // });
     // console.log(Items);
     // await Items.save();

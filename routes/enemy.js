@@ -5,14 +5,20 @@ const Enemy = require('../models/Enemy')
 router.post('/', async (req, res) => {    
 
     // var enemies = new Enemy({
-    //     land:"hydro",
-    //     level: "2",
+    //     land:"centaurus",
+    //     level: "1",
     //     enemies: [
     //         {
     //             enemy: "enemy1-2",
     //         },
     //         {
     //             enemy: "Asteroid-1-2",
+    //         },
+    //         {
+    //             enemy: "Enemy",
+    //         },
+    //         {
+    //             enemy: "Asteroid",
     //         },
     //     ],
     //     number: "4",
@@ -26,6 +32,7 @@ router.post('/', async (req, res) => {
     for (const enm of enemy[0].enemies) {
         tempArray.push(enm);
     }
+    console.log(tempArray);
     return res.json(tempArray);
 })
 module.exports = router
