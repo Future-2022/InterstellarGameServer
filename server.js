@@ -2,6 +2,7 @@ const express   = require('express')
 const connectDB = require('./config/db')
 const cors = require('cors')
 const app = express()
+var bodyParser = require('body-parser');
 
 connectDB()
 var http = require('http').createServer(app);
@@ -10,7 +11,9 @@ app.use(cors({
     origin: '*'
 }));
 
-app.use(express.json({ extended: false }))
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //* Define routes
 app.use('/users',   require('./routes/users'))

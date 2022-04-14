@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const PlayHistorySchema = new mongoose.Schema({
-
+    userName: {
+        type: String,
+        Required: true
+    },
     land: {
         type: String,
         Required: true
@@ -15,6 +18,18 @@ const PlayHistorySchema = new mongoose.Schema({
         required: true
     },
     Hp: {
+        type: Number,
+        required: true
+    },
+    itemCnt: {
+        type: Number,
+        required: true
+    },
+    levelScore: {
+        type: Number,
+        required: true
+    },
+    starCnt: {
         type: Number,
         required: true
     }
