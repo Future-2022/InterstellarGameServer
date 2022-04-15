@@ -50,7 +50,6 @@ router.post('/getHistory', async(req, res) => {
         console.log(userName);
         const getHistory = await PlayHistory.find({ "userName": userName });
         const realData = [];
-        console.log(getHistory.length);
         getHistory.forEach(element => {
             console.log(element);
             if(element["land"] == "HydraList") {
