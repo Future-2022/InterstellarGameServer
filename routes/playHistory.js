@@ -88,8 +88,7 @@ router.post('/getHistory', async(req, res) => {
             events.push(realData["AndromedaList"]);
         if(realData["DoradoList"])
             events.push(realData["DoradoList"]);
-
-        console.log(events);
+            
         res.send(events);
     } catch (err) {
         console.error(err.message);
