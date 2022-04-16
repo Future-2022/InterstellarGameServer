@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     // await Items.save();
 
     const { land, level } = req.body;
-
+    console.log(req.body);
     let item = await Item.find({ $and: [{ "land": land }, { "level": level }] });
     console.log("ss"+item[0].number);
     
