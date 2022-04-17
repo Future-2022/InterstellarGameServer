@@ -88,6 +88,23 @@ router.post('/getHistory', async(req, res) => {
             events.push(realData["AndromedaList"]);
         if(realData["DoradoList"])
             events.push(realData["DoradoList"]);
+
+        res.send(events);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+router.post('/getHydra', async(req, res) => {
+    const { userName } = req.body;
+    try {
+        const hydraData = await PlayHistory.find({$and: [{ "userName": userName }, {"land": "HydraList"}], $sort:{"level": 1} });    
+
+        const events = [];
+        hydraData.forEach(element => {
+            events.push(element);      
+        });            
             
         res.send(events);
     } catch (err) {
