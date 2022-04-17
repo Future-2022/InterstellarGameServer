@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
     console.log('level', req.body.level);
     let find_boss = await Boss.find({ $and: [ {"land":land}, { "level":level} ] });
     var tempArray = [];
+    
     for (const value of find_boss[0].bosses) {
         tempArray.push(value);
     }
