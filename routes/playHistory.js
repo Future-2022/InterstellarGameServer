@@ -99,13 +99,12 @@ router.post('/getHistory', async(req, res) => {
 router.post('/getHydra', async(req, res) => {
     const { userName } = req.body;
     try {
-        const hydraData = await PlayHistory.find({$and: [{ "userName": userName }, {"land": "HydraList"}], $sort:{"level": 1} });    
-
+        const hydraData = await PlayHistory.find({$and: [{ "userName": userName }, {"land": "HydraList"}]}).sort({"level": 1});    
+        console.log(hydraData);
         const events = [];
         hydraData.forEach(element => {
             events.push(element);      
-        });            
-            
+        });       
         res.send(events);
     } catch (err) {
         console.error(err.message);
