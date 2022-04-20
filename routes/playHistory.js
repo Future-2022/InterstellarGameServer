@@ -10,9 +10,7 @@ router.post('/',
         try {
             const levelScore = api.calculateScore(time, hp, itemCnt);
             const starCnt = api.calculateStar(levelScore);
-            console.log("---score---" + levelScore);
             const getHistory = await PlayHistory.findOne({ $and: [{ "userName": userName }, { "land": land }, {"level": level}] });
-            console.log(getHistory);
             if(!getHistory) {
                 let playHistory = new PlayHistory({
                     userName: userName,
@@ -47,11 +45,11 @@ router.post('/',
 router.post('/getHistory', async(req, res) => {
     const { userName } = req.body;
     try {
-        console.log(userName);
+        // console.log(userName);
         const getHistory = await PlayHistory.find({ "userName": userName });
         const realData = [];
         getHistory.forEach(element => {
-            console.log(element);
+            // console.log(element);
             if(element["land"] == "HydraList") {
                 if (!realData['HydraList'])
                     realData['HydraList'] = {show: true, cntLevel: 1};
@@ -100,7 +98,7 @@ router.post('/getHydra', async(req, res) => {
     const { userName } = req.body;
     try {
         const hydraData = await PlayHistory.find({$and: [{ "userName": userName }, {"land": "HydraList"}]}).sort({"level": 1});    
-        console.log(hydraData);
+        // console.log(hydraData);
         const events = [];
         hydraData.forEach(element => {
             events.push(element);      
@@ -113,12 +111,19 @@ router.post('/getHydra', async(req, res) => {
 });
 router.post('/getLevelHistory', async(req, res) => {
     const { userName, land, level, time, hp, itemCnt } = req.body;
+    console.log('new value', req.body);
     try {
         const levelScore = api.calculateScore(time, hp, itemCnt);
         const starCnt = api.calculateStar(levelScore);
         const getHistory = await PlayHistory.findOne({ $and: [{ "userName": userName }, { "land": land }, {"level": level}] });
-        console.log(getHistory);
-
+        // console.log(getHistory);
+        var score = 0;
+        if(!getHistory) {
+            score = 0;
+        }
+        else {
+            score = getHistory.levelScore
+        }
         let playHistory = {
             userName: userName,
             land: land,
@@ -128,7 +133,7 @@ router.post('/getLevelHistory', async(req, res) => {
             itemCnt: itemCnt,
             levelScore: levelScore,
             starCnt: starCnt,
-            maxScore: getHistory.levelScore
+            maxScore: score
         };
         
         const events = [];
