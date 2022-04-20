@@ -111,5 +111,33 @@ router.post('/getHydra', async(req, res) => {
         res.status(500).send('Server error');
     }
 });
+router.post('/getLevelHistory', async(req, res) => {
+    const { userName, land, level, time, hp, itemCnt } = req.body;
+    try {
+        const levelScore = api.calculateScore(time, hp, itemCnt);
+        const starCnt = api.calculateStar(levelScore);
+        const getHistory = await PlayHistory.findOne({ $and: [{ "userName": userName }, { "land": land }, {"level": level}] });
+        console.log(getHistory);
+
+        let playHistory = {
+            userName: userName,
+            land: land,
+            level: level,
+            time: time,
+            Hp: hp,
+            itemCnt: itemCnt,
+            levelScore: levelScore,
+            starCnt: starCnt,
+            maxScore: getHistory.levelScore
+        };
+        
+        const events = [];
+        events.push(playHistory);  
+        res.send(events);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
 
 module.exports = router
