@@ -139,6 +139,7 @@ router.post('/getLevelHistory', async(req, res) => {
         const events = [];
         events.push(playHistory);  
         res.send(events);
+        
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
