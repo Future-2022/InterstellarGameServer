@@ -14,7 +14,7 @@ const LevelItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  enemy: {
+  player: {
     type: String,
     required: true
   },

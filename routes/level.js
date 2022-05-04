@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
     //     land: "dorado",
     //     level: "4",
     //     maxScore: "80",
-    //     enemy: "bad",
+    //     player: "SpaceShip",
     //     maxHp: "20"
     // });    
     // console.log(levelitem);
@@ -16,8 +16,9 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
     
     const { land, level } = req.body;
+    console.log(req.body+"!!!!!!!!!!");
     let item = await LevelItem.find({ $and: [{ "land": land }, { "level": level }] });
-
+    console.log("item--------"+item[0]);
     return res.send(item[0]);
 })
 
